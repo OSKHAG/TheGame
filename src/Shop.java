@@ -1,16 +1,17 @@
 public class Shop {
 
-    Player p;
+    final Player p;
 
     private final int price = 50;
 
 
-    public Shop(Player p){
+    public Shop(Player p) {
         this.p = p;
     }
 
 
     public Player shopMenu() {
+        System.out.println("Welcome to Mama Yama's shop, Amulets cost 50 gold");
         boolean leave = false;
         while (!leave) {
             printShopMenuOptions();
@@ -25,23 +26,25 @@ public class Shop {
 
     }
 
-    public void printShopMenuOptions(){
-        System.out.println("Welcome to Mama Yama's shop, Amulets cost 50 gold" +
-                "\n1. Buy an Attack Amulet" +
-                "\n2. Buy a Defense Amulet" +
-                "\n3. Leave Shop");
+    public void printShopMenuOptions() {
+        System.out.println(
+                "\nYou have " + p.getGold() + " Gold" +
+                        "\n1. Buy an Attack Amulet" +
+                        "\n2. Buy a Defense Amulet" +
+                        "\n3. Leave Shop");
     }
+
     public boolean verifyGold(int gold) {
         return gold > price;
     }
 
     public void buyAttackAmulet() {
         boolean goldStatus = verifyGold(p.getGold());
-        if(!goldStatus){
-            System.out.println("Not enough gold good sir");
+        if (!goldStatus) {
+            notEnoughGold();
         }
-        if(goldStatus){
-            System.out.println("Thank you for your purchase");
+        if (goldStatus) {
+            enoughGold();
             transaction();
             getAttackAmulet();
         }
@@ -49,24 +52,35 @@ public class Shop {
 
     public void buyDefenseAmulet() {
         boolean goldStatus = verifyGold(p.getGold());
-        if(!goldStatus){
-            System.out.println("Not enough gold good sir");
+        if (!goldStatus) {
+            notEnoughGold();
         }
-        if(goldStatus){
-            System.out.println("Thank you for your purchase");
+        if (goldStatus) {
+            enoughGold();
             transaction();
             getDefenseAmulet();
         }
     }
 
-    public void transaction(){
+    public void notEnoughGold() {
+        System.out.println("Not enough gold good sir" +
+                "\nAnything else?");
+    }
+
+    public void enoughGold() {
+        System.out.println("Thank you for your purchase" +
+                "\nAnything else?");
+    }
+
+    public void transaction() {
         p.setGold(p.getGold() - price);
     }
 
-    public void getAttackAmulet(){
+    public void getAttackAmulet() {
         p.setAttack(p.getAttack() + 10);
     }
-    public void getDefenseAmulet(){
+
+    public void getDefenseAmulet() {
         p.setDefense(p.getDefense() + 10);
     }
 }

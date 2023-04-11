@@ -24,10 +24,11 @@ public class Menu {
         }
     }
     public static void printMenuOptions() {
-        System.out.println("1. Leave your safe home in search for danger, all birds must perish" +
-                "\n2. Visit Mama Yama's Amulet Shop" +
-                "\n3. Show Fred the little mouse's statistical attributes" +
-                "\n4. Quit the game in shame.");
+        System.out.println("""
+                1. Leave your safe home in search for danger, all birds must perish
+                2. Visit Mama Yama's Amulet Shop
+                3. Show Fred the little mouse's statistical attributes
+                4. Quit the game in shame.""");
     }
 }
 

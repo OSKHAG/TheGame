@@ -2,11 +2,11 @@ import java.util.NoSuchElementException;
 
 public class Fight {
 
-    Player p;
-    Bird bird = new Bird("Small Bird", 50, 15, 10);
-    BigBird bigBird = new BigBird("Big Bird", 75, 15, 12);
+    final Player p;
+    final Bird bird = new Bird("Small Bird", 50, 15, 10);
+    final BigBird bigBird = new BigBird("Big Bird", 75, 15, 12);
 
-    Monster enemy;
+    final Monster enemy;
 
     public Fight(Player p) {
         this.p = p;
@@ -27,12 +27,10 @@ public class Fight {
                 int val = Helper.integerInput(2);
                 switch (val) {
                     case 1 -> {
-                        System.out.println("You attack " + enemy.getName());
                         attack();
                         if (!enemy.isAlive()) {
                             System.out.println(enemy.getName() + " is dead");
-                            System.out.println("Returning home..");
-                            System.out.println("You rest and your health regenerates");
+                            returningHome();
                             rewards();
                             endFight = true;
                         }
@@ -42,9 +40,7 @@ public class Fight {
                         }
                     }
                     case 2 -> {
-                        System.out.println("Returning home..");
-                        System.out.println("You rest and your health regenerates");
-                        p.rest();
+                        returningHome();
                         endFight = true;
                     }
                 }
@@ -77,7 +73,6 @@ public class Fight {
     public void rewards() {
         getGold();
         getExperience();
-        p.rest();
     }
 
     public void getExperience() {
@@ -91,6 +86,11 @@ public class Fight {
     public void printFightOptions(){
         System.out.println("1. Attack" +
                 "\n2. Run away, like a coward");
+    }
 
+    public void returningHome(){
+        System.out.println("Returning home..");
+        System.out.println("You rest and your health regenerates");
+        p.rest();
     }
 }

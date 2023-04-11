@@ -3,6 +3,13 @@ import java.util.Scanner;
 
 public class Helper {
 
+    public static void clearConsole(){
+        for (int i = 0; i < 50; i++) {
+            System.out.println();
+        }
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
     public static int integerInput(int caseNum){
         Scanner sc = new Scanner(System.in);
         int val;
@@ -19,6 +26,7 @@ public class Helper {
                 sc.next();
             }
         }
+        clearConsole();
         return val;
     }
     public static boolean diceRoll(){

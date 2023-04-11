@@ -1,5 +1,5 @@
 public class Monster {
-    private String name;
+    private final String name;
     private int health;
     private int attack;
     private int defense;
@@ -10,10 +10,7 @@ public class Monster {
         this.health = health;
         this.attack = attack;
         this.defense = defense;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+        experience = 0;
     }
 
     public String getName() {
@@ -28,17 +25,10 @@ public class Monster {
         return health;
     }
 
-    public void setAttack(int attack) {
-        this.attack = attack;
-    }
-
     public int getAttack() {
         return attack;
     }
 
-    public void setDefense(int defense) {
-        this.defense = defense;
-    }
 
     public int getDefense() {
         return defense;
@@ -60,11 +50,10 @@ public class Monster {
     }
 
     public void setDifficulty(int level) {
-        for (int i = 0; i <= level ; i++) {
+        for (int i = 0; i <= level; i++) {
             health = Helper.tenPercentStatIncrease(health);
             attack = Helper.tenPercentStatIncrease(attack);
             defense = Helper.tenPercentStatIncrease(defense);
         }
-        System.out.println(health);
     }
 }

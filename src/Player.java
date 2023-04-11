@@ -1,7 +1,5 @@
-import java.util.logging.Level;
-
 public class Player {
-    private String name;
+    private final String name;
     private int health;
     private int fullHealth;
     private int attack;
@@ -17,22 +15,6 @@ public class Player {
         this.defense = defense;
         this.experience = experience;
         fullHealth = health;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setHealth(int health) {
-        this.health = health;
-    }
-
-    public int getHealth() {
-        return health;
     }
 
     public void setAttack(int attack) {
